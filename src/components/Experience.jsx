@@ -12,6 +12,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect, useState } from "react";
 import { Heart } from "./Heart";
 import { FadeInSection } from "./FadeInSection";
+import { NoiseBackground } from "./NoiseBackground";
 
 export const Experience = () => {
   const scroll = useScroll();
@@ -50,9 +51,10 @@ export const Experience = () => {
 
   return (
     <>
-      <OrbitControls enableZoom={false} />
       <ambientLight intensity={1} />
-      <Environment preset="city" background blur={0.4} />
+      <color attach="background" args={["#000000"]} />
+      <Environment preset="city" background blur={0.4}/>
+      <NoiseBackground />
 
       {/* Сердце на фоне */}
       <Float floatIntensity={2} speed={3}>
