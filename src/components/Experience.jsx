@@ -51,9 +51,13 @@ export const Experience = () => {
 
   return (
     <>
-      <ambientLight intensity={1} />
-      <color attach="background" args={["#000000"]} />
-      <Environment preset="city" background blur={0.4}/>
+      <color attach="background" args={["#1a4a3a"]} />
+      <ambientLight intensity={2} />
+      <directionalLight intensity={3} position={[5, 5, 5]} />
+      <directionalLight intensity={1.5} position={[-5, 5, -5]} />
+      <spotLight intensity={2.0} position={[0, 2, 5]} angle={0.3} penumbra={1} />
+      <Environment preset="city" blur={0.4}/>
+      
       <NoiseBackground />
 
       {/* Сердце на фоне */}

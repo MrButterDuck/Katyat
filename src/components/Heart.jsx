@@ -27,7 +27,9 @@ const glassMaterial = useMemo(() => {
     depthWrite: true,     // КЛЮЧ для множества перекрывающихся частей
     side: THREE.DoubleSide, // если есть проблемы с нормалями/тонкие стенки
     sheen: 0.0,
-    sheenColor: new THREE.Color( parseInt(params.sheenColor.replace('#','0x')) )
+    sheenColor: new THREE.Color( parseInt(params.sheenColor.replace('#','0x')) ),
+    emissive: new THREE.Color("#ff0000"), // лёгкий «свет»
+    emissiveIntensity: 0.1
   });
 }, []);
 

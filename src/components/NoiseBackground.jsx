@@ -7,9 +7,14 @@ export function NoiseBackground() {
   const pointsRef = useRef();
   const Noise = useMemo(() => new ImprovedNoise(), []);
   const gridSize = 32;
-  const gap = 0.15;
-  const nScale = 0.4;
-  const zPosScale = 0.5;
+  const gap = 0.6;
+  const nScale = 0.9;
+  const zPosScale = 3.0;
+
+  const params = {
+    low_color: "#1a4a3a",
+    high_color: "#2d6b5d"
+  }
 
   // Инициализация позиций и цветов
   const { positions, colors } = useMemo(() => {
@@ -34,11 +39,11 @@ export function NoiseBackground() {
     return g;
   }, [positions, colors]);
 
-  const lowColor = new THREE.Color(0.2, 0.0, 0.0);
-  const highColor = new THREE.Color(0, 0, 0);
+  const lowColor = new THREE.Color(parseInt(params.low_color.replace('#','0x')));
+  const highColor = new THREE.Color(parseInt(params.high_color.replace('#','0x')));
 
   useFrame(({ clock }) => {
-    const t = clock.getElapsedTime() * 0.7;
+    const t = clock.getElapsedTime() * 0.2;
     const pos = geom.getAttribute("position");
     const col = geom.getAttribute("color");
 
@@ -57,9 +62,9 @@ export function NoiseBackground() {
   });
 
   return (
-    <group position={[0, 0, -10]} scale={[2, 2, 1]}>
+    <group position={[0, 0, -40]} scale={[2, 2, 1]}>
         <points ref={pointsRef} geometry={geom}>
-            <pointsMaterial size={10} vertexColors />
+            <pointsMaterial size={5} vertexColors />
         </points>
     </group>
   );
