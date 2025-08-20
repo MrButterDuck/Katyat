@@ -11,16 +11,22 @@
   "dependencies": {
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "8.13.3",
+    "@tailwindcss/vite": "^4.1.12",
     "@types/three": "0.152.1",
+    "framer-motion": "^12.23.12",
     "leva": "^0.9.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "styled-components": "^6.1.19",
     "three": "^0.179.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.12",
     "vite": "^7.1.2"
   }
 }
