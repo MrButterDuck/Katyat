@@ -5,7 +5,7 @@ import { Experience } from "./components/Experience";
 function App() {
   return (
     <Canvas shadows camera={{ position: [0, 0, 5], fov: 30 }}>
-      <ScrollControls pages={5}>
+      <ScrollControls pages={13}>
         <Experience />
       </ScrollControls>
     </Canvas>
