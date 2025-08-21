@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import { useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useMemo, useRef, useState, useEffect } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
 import { ImprovedNoise } from "three/examples/jsm/math/ImprovedNoise.js";
 
 export function NoiseBackground() {
@@ -16,13 +16,32 @@ export function NoiseBackground() {
     high_color: "#2d6b5d"
   }
 
+  const [scale, setScale] = useState(1);
+  
+    // Получаем размеры канваса
+    const { size } = useThree();
+  
+    useEffect(() => {
+      const handleResize = () => {
+        const isMobile = window.innerWidth <= 768; // можно менять порог
+        setScale(isMobile ? 0.5 : 1); // уменьшаем на мобильных
+      };
+  
+      handleResize(); // сразу при монтировании
+      window.addEventListener("resize", handleResize);
+  
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+
   // Инициализация позиций и цветов
   const { positions, colors } = useMemo(() => {
     const coords = [];
     const cols = [];
     for (let i = -gridSize; i < gridSize; i++) {
       for (let j = -gridSize; j < gridSize; j++) {
-        coords.push(i * gap, j * gap, 0);
+        coords.push(i * gap * scale, j * gap * scale, 0);
         cols.push(Math.random(), Math.random(), Math.random());
       }
     }
@@ -30,7 +49,7 @@ export function NoiseBackground() {
       positions: new Float32Array(coords),
       colors: new Float32Array(cols),
     };
-  }, []);
+  }, [scale]);
 
   const geom = useMemo(() => {
     const g = new THREE.BufferGeometry();
@@ -64,7 +83,7 @@ export function NoiseBackground() {
   return (
     <group position={[0, 0, -40]} scale={[2, 2, 1]}>
         <points ref={pointsRef} geometry={geom}>
-            <pointsMaterial size={5} vertexColors />
+            <pointsMaterial size={scale * 5} vertexColors />
         </points>
     </group>
   );

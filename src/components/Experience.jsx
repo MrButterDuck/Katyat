@@ -26,6 +26,26 @@ export const Experience = () => {
   const fullText = "Конец скролла 🚀";
   const [typing, setTyping] = useState(false);
 
+const sectionStyle = {
+  height: "100vh",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  color: "#f0f0f0",
+  fontFamily: "monospace",
+  fontSize: "1.5rem",
+  textAlign: "center",
+  padding: "0 5vw",
+  boxSizing: "border-box",
+  position: "relative",
+  minHeight: "100vh",
+};
+
+  const contentStyle = {
+    maxWidth: "800px",   // чтобы текст не растягивался на весь экран
+  };
+
   useFrame(() => {
     const offset = scroll.offset; // 0 → 1
 
@@ -73,103 +93,63 @@ export const Experience = () => {
       {/* Текст/абзацы в Scroll html */}
       <Scroll html>
         <div style={{ width: "100vw" }}>
-          <section
-            style={{
-              height: "100vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "2rem",
-              fontFamily: "monospace",
-              whiteSpace: "pre",
-            }}
-          >
-            <FadeInSection pageIndex={0} pages={pages}>
+          <section style={sectionStyle} >
+            <div style={contentStyle}>
               <h1>Первый абзац текста</h1>
-              <HoverImage
+              <p>Много бла-бла-бла-</p>
+              {/* <HoverImage
                 url="src/assets/photos/20240831-IMG_0149.jpg"
                 caption="Эта фотография рассказывает о важном событии."
                 textContent="Это развернутое описание фотографии. Здесь можно добавить больше текста, чтобы описать событие или контекст изображения."
-              />
-            </FadeInSection>
-
+              /> */}
+            </div>
           </section>
 
-          <section
-            style={{
-              height: "100vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "2rem",
-              fontFamily: "monospace",
-              whiteSpace: "pre",
-            }}
-          >
-            <FadeInSection pageIndex={1} pages={pages}>
-              <h2>Второй абзац</h2>
-            </FadeInSection>
+          <section style={sectionStyle}>
+            <div style={contentStyle}>
+              <h1>Второй абзац текста</h1>
+              <p>Много бла-бла-бла-</p>
+            </div>
           </section>
 
-          <section
-            style={{
-              height: "100vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "2rem",
-              fontFamily: "monospace",
-              whiteSpace: "pre",
-            }}
-          >
-            <FadeInSection pageIndex={2} pages={pages}>
-              <h2>Третий абзац</h2>
+          <section style={sectionStyle}>
+            <div style={contentStyle}>
+              <h1>Третий абзац текста</h1>
+              <p>Много бла-бла-бла-</p>
               <HoverImage
                 url="src/assets/photos/20241013-IMG_0667.jpg"
                 caption="Эта фотография рассказывает о важном событии."
                 textContent="Это развернутое описание фотографии. Здесь можно добавить больше текста, чтобы описать событие или контекст изображения."
               />
-            </FadeInSection>
-            
+            </div>
           </section>
 
-          <section
-            style={{
-              height: "100vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "2rem",
-              fontFamily: "monospace",
-              whiteSpace: "pre",
-            }}
-          >
+          <section style={sectionStyle}>
+            <div style={contentStyle}>
               <GiftBox
-                initialImage="src\assets\gift2\gift_Leo_closed.png"
-                openedImage="src\assets\gift2\gift_Leo_opend.png"
+                initialImage="src/assets/gift2/gift_Leo_closed.png"
+                openedImage="src/assets/gift2/gift_Leo_opend.png"
                 caption="Сюрприз!"
                 textContent="Поздравляем! Вот твой подарок. 🎁"
               />
+            </div>
           </section>
 
-          <section
-            style={{
-              height: "100vh",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "2rem",
-              fontFamily: "monospace",
-              whiteSpace: "pre",
-            }}
-          >
-            <FadeInSection pageIndex={4} pages={pages}>
+          <section style={sectionStyle}>
+            <div style={contentStyle}>
               {typedText}
-              <span style={{ borderRight: "2px solid white", marginLeft: "2px", animation: "blink 1s step-start infinite" }} />
-            </FadeInSection>
+              <span
+                style={{
+                  borderRight: "2px solid white",
+                  marginLeft: "2px",
+                  animation: "blink 1s step-start infinite",
+                }}
+              />
+            </div>
           </section>
         </div>
       </Scroll>
+
 
     </>
   );

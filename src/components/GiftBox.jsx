@@ -13,8 +13,6 @@ export const GiftBox = ({ initialImage, openedImage, caption, textContent }) => 
       onClick={handleClick}
       className="gift-box"
       style={{
-        height: "100vh",
-        width: "100vw",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

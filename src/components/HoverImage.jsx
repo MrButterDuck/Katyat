@@ -107,8 +107,8 @@ export const HoverImage = ({ url, caption, textContent }) => {
         >
             <div
             className="
-                w-[70%] sm:w-[80%] md:w-[85%] lg:w-[90%] 
-                max-w-[400px] h-auto rounded-lg overflow-hidden
+                w-[100%] sm:w-[100%] md:w-[100%] lg:w-[100%] 
+                max-w-[800px] h-auto rounded-lg overflow-hidden
             "
             >
             <img
@@ -119,7 +119,7 @@ export const HoverImage = ({ url, caption, textContent }) => {
             </div>
             {caption && (
             <p className="
-                mt-3 text-center text-base sm:text-lg md:text-xl lg:text-2xl text-white font-semibold
+                mt-3 text-center text-6xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-semibold
             ">
                 {caption}
             </p>

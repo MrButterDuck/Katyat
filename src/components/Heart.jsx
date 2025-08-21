@@ -1,6 +1,6 @@
 import { useGLTF, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef, useMemo  } from "react";
+import { useFrame, useThree  } from "@react-three/fiber";
+import React, { useEffect, useRef, useState, useMemo  } from "react";
 import * as THREE from "three";
 export function Heart(props) {
   const { nodes, materials } = useGLTF("/models/heart.glb");
@@ -10,6 +10,26 @@ export function Heart(props) {
     color: '#ff00000',
     sheenColor: '#ffffff'
   };
+
+  const [scale, setScale] = useState(1);
+
+  // Получаем размеры канваса
+  const { size } = useThree();
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 768; // можно менять порог
+      setScale(isMobile ? 0.25 : 0.5); // уменьшаем на мобильных
+    };
+
+    handleResize(); // сразу при монтировании
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
 
   // Создаем стеклянный материал
 const glassMaterial = useMemo(() => {
@@ -93,7 +113,7 @@ const glassMaterial = useMemo(() => {
   });
 
   return (
-    <group {...props} dispose={null} ref={group}>
+    <group {...props} dispose={null} ref={group} scale={[scale, scale, scale]}>
       <mesh
         name="Heart_Full_cell"
         geometry={nodes.Heart_Full_cell.geometry}

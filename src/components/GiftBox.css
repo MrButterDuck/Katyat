@@ -4,7 +4,7 @@
   object-fit: contain;
   transition: transform 0.8s ease, opacity 0.8s ease;
   animation: shake 0.5s infinite;
-  width: 30%; /* default */
+  width: 60%; /* default */
 }
 
 .gift-image.opened {
@@ -32,7 +32,7 @@
 
 @media (max-width: 768px) {
   .gift-box img {
-    width: 40%;
+    width: 60%;
   }
   .gift-box h3 {
     font-size: 1.5rem;
@@ -44,7 +44,7 @@
 
 @media (max-width: 480px) {
   .gift-box img {
-    width: 60%;
+    width: 80%;
   }
   .gift-box h3 {
     font-size: 1.2rem;
